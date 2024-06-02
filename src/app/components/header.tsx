@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Header() {
@@ -12,10 +13,12 @@ export default function Header() {
         <span className="text-black font-bold">at /&gt;</span>
       </div>
       <div className="w-fit p-2">
+        <Link href="https://github.com/krishnakumar-1234/password-manger" target="_blank">
         <button className="w-[130px] h-[40px] flex items-center gap-2 font-bold p-3 bg-black text-white justify-center rounded-full hover:bg-transparent hover:border-2 border-black text-1xl">
             <Image className="GithubLogo" width={24} height={24} src="/github.svg" alt="icons" />
           Github
         </button>
+        </Link>
       </div>
     </nav>
   );

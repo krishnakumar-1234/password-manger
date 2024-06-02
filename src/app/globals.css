@@ -18,12 +18,9 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -35,4 +32,39 @@ body {
 
 .GithubLogo {
   filter: invert(1);
+}
+
+
+input {
+  outline-color: greenyellow;
+  outline-width: 0.50px;
+}
+
+.eye {
+  position: relative;
+  top: 0px;
+  right: 40px;
+}
+
+@media (max-width: 500px) {
+  .tableContainer {
+    width: 100%;
+    display: flex;
+    overflow: scroll;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .innerTableContainer {
+    width: 100%;
+
+  }
+
+  .flexDirection {
+    flex-direction: column;
+  }
+
+  .widthHundred {
+    width: 100%;
+  }
 }
