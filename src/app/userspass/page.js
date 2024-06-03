@@ -4,8 +4,13 @@ import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSave, faEye, faEyeSlash, faTrash, faCopy } from "@fortawesome/free-solid-svg-icons";
-
+import {
+  faSave,
+  faEye,
+  faEyeSlash,
+  faTrash,
+  faCopy,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Page() {
   const [inputs, setInputs] = useState({
@@ -40,21 +45,57 @@ export default function Page() {
     if (inputs.urlWeb && inputs.username && inputs.password) {
       setEntries([...entries, inputs]);
       setInputs({ urlWeb: "", username: "", password: "" });
-      toast("📚 Saved!");
+      toast.success("Saved!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } else {
-      toast("Please fill in all fields ❓");
+      toast.error("Please fill in all fields.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
   const handleDelete = (index) => {
     const newEntries = entries.filter((entry, i) => i !== index);
     setEntries(newEntries);
-    toast("🗑 Entry deleted!");
+    toast.warn("Entry deleted!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
-    toast("📎 Copied to clipboard!");
+    toast.info("Copied to clipboard!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   return (
@@ -120,7 +161,9 @@ export default function Page() {
             <table className="w-full table-auto border-collapse border border-gray-800">
               <thead>
                 <tr className="bg-gray-700 text-white">
-                  <th className="border border-gray-800 px-4 py-2">Website URL</th>
+                  <th className="border border-gray-800 px-4 py-2">
+                    Website URL
+                  </th>
                   <th className="border border-gray-800 px-4 py-2">Username</th>
                   <th className="border border-gray-800 px-4 py-2">Password</th>
                   <th className="border border-gray-800 px-4 py-2">Actions</th>
@@ -129,9 +172,15 @@ export default function Page() {
               <tbody>
                 {entries.map((entry, index) => (
                   <tr key={index} className="bg-gray-900 text-white">
-                    <td className="border border-gray-800 px-4 py-2">{entry.urlWeb}</td>
-                    <td className="border border-gray-800 px-4 py-2">{entry.username}</td>
-                    <td className="border border-gray-800 px-4 py-2">{entry.password}</td>
+                    <td className="border border-gray-800 px-4 py-2">
+                      {entry.urlWeb}
+                    </td>
+                    <td className="border border-gray-800 px-4 py-2">
+                      {entry.username}
+                    </td>
+                    <td className="border border-gray-800 px-4 py-2">
+                      {entry.password}
+                    </td>
                     <td className="border border-gray-800 px-4 py-2 flex items-center justify-center gap-2">
                       <button onClick={() => handleCopy(entry.urlWeb)}>
                         <FontAwesomeIcon icon={faCopy} className="text-white" />
@@ -143,7 +192,10 @@ export default function Page() {
                         <FontAwesomeIcon icon={faCopy} className="text-white" />
                       </button>
                       <button onClick={() => handleDelete(index)}>
-                        <FontAwesomeIcon icon={faTrash} className="text-white" />
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          className="text-white"
+                        />
                       </button>
                     </td>
                   </tr>
